@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*-
 
 import splines
+import numpy as np
+import matplotlib.pyplot as plt
 
 ##############################################################################
 # EP MAC0210 - 1s2018
@@ -53,7 +55,7 @@ def getw (file_name) :
     n = int(n)
     
     wtemp = np.random.rand(50)
-    s = spline(wtemp, t[0], t[-1])
+    s = splines.spline(wtemp, t[0], t[-1])
     B=[]
     for j in range(n) :
         B.append(s.beta_j(j,t))
@@ -62,12 +64,12 @@ def getw (file_name) :
     Bt = B.transpose()
     m1 = np.dot(B,Bt)
     b = np.dot(B,y)
-    m2 = matrix_m2(n)
+    m2 = splines.matrix_m2(n)
     m2 = np.dot(lambida,m2)
     m = m1+m2
     w = np.linalg.solve(m,b)
     
-    s2 = spline(w, t[0], t[-1])
+    s2 = splines.spline(w, t[0], t[-1])
     plt.plot(t,s2(t))
         
     
