@@ -19,8 +19,9 @@ def createInput():
         ref_arquivo.write(str(t[i]) + " " + str(y[i]) + str(" \n"))
     ref_arquivo.close()
 
-# getw() get w for our aproximation. It reads a text file (input.txt) with the 
-# format:
+# getw(file_name) get w for our aproximation. 
+# You should use it: getw("your_file.txt") , where your_file.txt should have 
+# this format:
 #
 # n
 # t0 y0
@@ -28,8 +29,8 @@ def createInput():
 #  ...
 # tk yk    
 
-def getw ():
-    file = open("./input.txt","r")
+def getw (file_name) :
+    file = open(file_name,"r")
     t = []
     y = []
     inp = file.readlines()
